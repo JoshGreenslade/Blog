@@ -1,0 +1,406 @@
+@import "config";
+@import "utilities";
+
+// General Styles
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  background: $light-color;
+  font-family: "Work Sans", sans-serif;
+  font-size: 1.2rem;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+  color: $dark-color;
+}
+
+.link {
+  // text-decoration: underline;
+  color: $link-color;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.skele_left,
+.skele_right {
+  position: fixed;
+  transition: 10s;
+  bottom: 0;
+
+  &:hover {
+    transform: rotate(1800deg) scale(10) translateX(50%) translateY(-50%);
+  }
+  img {
+    object-fit: cover;
+    width: 100px;
+  }
+}
+
+.skele_right {
+  right: 0;
+
+  &:hover {
+    transform: rotate(1800deg) scale(10) translateX(-50%) translateY(-50%);
+  }
+}
+
+// Main navbar
+#main-nav {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  border-top: 1px solid $dark-color;
+  border-bottom: 1px solid $dark-color;
+  width: 97vw;
+
+  ul {
+    display: flex;
+    justify-content: center;
+  }
+
+  li {
+    border-right: 1px solid $dark-color;
+
+    &:first-child {
+      border-left: 1px solid $dark-color;
+    }
+  }
+
+  a {
+    display: block;
+    padding: 0.8rem 3rem;
+    transition: background-color 0.5s, color 0.5s;
+
+    &:hover {
+      background-color: $main-color;
+      color: $light-color;
+    }
+  }
+}
+
+.mobile {
+  display: none;
+}
+
+// Header
+#header {
+  &-home {
+    .title-box {
+      padding: 3rem;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 200;
+      letter-spacing: 0.6rem;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      margin-top: 2rem;
+      letter-spacing: 0.2rem;
+    }
+  }
+}
+
+// Showcase
+#showcase {
+  .showcase-container {
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+    max-width: 800px;
+    margin: auto;
+  }
+
+  .showcase-content {
+    position: relative;
+    display: flex;
+    border: 1px $dark-color solid;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    width: 90%;
+    transition: 0.3s ease-in-out;
+
+    .showcase-img {
+      width: 100%;
+      object-fit: cover;
+      border-bottom: 1px solid $dark-color;
+    }
+
+    .showcase-text {
+      padding: 3rem;
+    }
+
+    .showcase-title {
+      font-weight: bold;
+      letter-spacing: 0.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .showcase-highlight {
+      position: absolute;
+      top: -2.5rem;
+      left: -1px;
+      border: 1px solid $dark-color;
+      padding: 1rem 4rem;
+      background: $light-color;
+      font-size: 2rem;
+      letter-spacing: 0.6rem;
+      font-weight: 50;
+    }
+  }
+  .showcase-content:hover {
+    transform: scale(1.01);
+    background-color: $main-color;
+  }
+}
+
+// Blog lists
+// Note to Josh: This could do with being tidied up
+#main-content {
+  .flex-container {
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+
+    #recent-posts {
+      flex: 2;
+      border-right: 1px solid #000;
+
+      .posts-container {
+        margin: auto;
+        width: 90%;
+
+        .card {
+          transition: 0.3s ease-in-out;
+
+          img {
+            border-right: 1px solid #ccc;
+          }
+        }
+
+        .card:hover {
+          transform: scale(1.02);
+          background-color: $main-color;
+        }
+
+        .posts-title {
+          padding: 4rem 0rem;
+          letter-spacing: 1.2rem;
+          font-weight: lighter;
+          font-size: 3rem;
+          color: $dark-color;
+        }
+      }
+    }
+
+    #about {
+      flex: 1;
+      margin: auto 2rem;
+      line-height: 2rem;
+
+      .aboutme-container > * {
+        margin: 1rem auto;
+      }
+
+      img {
+        margin: 2rem auto;
+        display: block;
+        border: 5px solid $dark-color;
+        border-radius: 50%;
+        width: 50%;
+        object-fit: cover;
+      }
+
+      h3,
+      h2 {
+        text-align: center;
+      }
+
+      a {
+        color: black;
+        font-size: 2rem;
+        color: steelblue;
+
+        &:hover {
+          color: $main-color;
+        }
+      }
+
+      &:target {
+        animation: colorchange forwards 2s;
+      }
+
+      @keyframes colorchange {
+        from {
+          background-color: $main-color;
+        }
+
+        to {
+          background-color: white;
+        }
+      }
+    }
+  }
+}
+
+#blog-post {
+  margin: 5rem auto;
+  line-height: 2.3rem;
+
+  #primary-post {
+    padding: 3rem 5rem;
+
+    h1 {
+      font-size: 2.3rem;
+      font-weight: bolder;
+      padding-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      padding-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    p {
+      font-size: 1.3rem;
+      font-weight: normal;
+    }
+
+    * {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+  }
+
+  #recent-posts {
+    & > div:first-child {
+      padding: 1rem 0;
+    }
+    #other-posts {
+      .posts-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: space-between;
+        gap: 1rem;
+      }
+      .card-mini:hover {
+        transform: scale(1.02);
+        background-color: $main-color;
+      }
+    }
+  }
+}
+
+#message-form {
+  text-align: center;
+  margin: 3rem;
+
+  * {
+    padding: 1rem 0;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  .form-container {
+    display: grid;
+    margin-bottom: 4rem;
+    grid-template-areas:
+      "name email"
+      "message message";
+
+    * {
+      margin: 1rem 1rem;
+    }
+
+    .name-input {
+      grid-area: name;
+    }
+
+    .email-input {
+      grid-area: email;
+    }
+
+    .message-input {
+      grid-area: message;
+    }
+  }
+}
+
+#additionalcontact {
+  text-align: center;
+  margin-bottom: 1rem;
+  margin-top: 5rem;
+  h3 {
+    margin-bottom: 2rem;
+  }
+}
+
+// Footer
+#footer {
+  background: $light-color;
+  margin: auto;
+  border-top: 1px solid #000;
+  padding: 3rem 0rem;
+
+  .footer-content {
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    font-size: 1.2rem;
+
+    a i {
+      color: steelblue;
+    }
+
+    & > * {
+      padding: 0 2rem;
+    }
+
+    a:hover {
+      transition: linear 0.3s;
+      color: #000;
+      transform: scale(1.1);
+    }
+  }
+}
+
+@import "media";

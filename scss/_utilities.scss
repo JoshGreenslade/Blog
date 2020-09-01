@@ -1,0 +1,176 @@
+// Layout
+
+.container {
+  max-width: $website-width;
+  margin: auto;
+  overflow: hidden;
+}
+
+.bottom-line {
+  margin: auto;
+  background-color: black;
+  height: 1px;
+  width: 97%;
+}
+
+.bottom-line-small {
+  margin: auto;
+  background-color: black;
+  height: 1px;
+  width: 5vw;
+  margin: 1rem auto;
+}
+
+.py-1 {
+  padding: 1rem;
+}
+.py-2 {
+  padding: 2rem;
+}
+.py-3 {
+  padding: 3rem;
+}
+.py-4 {
+  padding: 4rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.space-around {
+  justify-content: space-between;
+  margin: 1rem 1rem;
+}
+
+.hidden {
+  display: none;
+}
+// Style
+.border-all {
+  border: 1px solid $dark-color;
+}
+
+blockquote {
+  border-left: solid 2px $main-color;
+  margin: 2rem 0;
+  padding-left: 2rem;
+  font-style: oblique;
+  font-size: 1.4rem;
+}
+
+// Text
+
+h1 {
+  font-family: $serif-font;
+}
+h2 {
+  font-family: $sans-serif-font;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.meta-info {
+  font-size: 1rem;
+  font-weight: light;
+  padding-bottom: 1.5rem;
+  color: #333;
+}
+
+// Reusable Elements
+
+.text-input {
+  border: none;
+  border-bottom: 1px solid $dark-color;
+  font-family: $sans-serif-font;
+  font-size: 1.2rem;
+  resize: none;
+  overflow: hidden;
+
+  &:focus {
+    background-color: $main-color;
+    outline: none;
+  }
+
+  &:hover {
+    border-color: $main-color;
+  }
+}
+
+.chevron-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.btn {
+  border: none;
+  background: $main-color;
+  text-align: center;
+  width: 250px;
+  letter-spacing: 0.2rem;
+  font-size: 1.3rem;
+  transition: all 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    background: $dark-color;
+    color: $light-color;
+  }
+}
+.card {
+  border: 1px black solid;
+  display: flex;
+  margin: auto;
+  margin-bottom: 5rem;
+  max-height: 400px;
+
+  img {
+    object-fit: cover;
+    width: 50%;
+  }
+
+  .card-content {
+    width: 50%;
+    margin: 4rem;
+    overflow: hidden;
+
+    .meta-info {
+      font-size: 0.8rem;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: bolder;
+      letter-spacing: 0.2rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.card-mini {
+  display: flex;
+  flex-direction: column;
+  border: 1px $dark-color solid;
+  height: 280px;
+  width: 280px;
+
+  & > img {
+    height: 66%;
+    object-fit: cover;
+    border-bottom: 1px solid $dark-color;
+  }
+  & > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 33%;
+    font-size: 0.9rem;
+    margin: 0 1rem;
+  }
+}

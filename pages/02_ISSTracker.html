@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&family=Work+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/fbbaef80c7.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="../css/main.css" />
+    <title>Ostentatious & Bodacious | Project 005</title>
+  </head>
+  <body>
+    <!-- Skeletons -->
+    <div class="skele_left">
+      <img src=".././img/skel.gif" alt="" />
+    </div>
+    <div class="skele_right">
+      <img src=".././img/skel.gif" alt="" />
+    </div>
+
+    <!-- Header -->
+    <header id="header-home">
+      <div class="container">
+        <div class="title-box">
+          <h2 class="pre-title text-center">
+            Gods this top part feels pretentious doesn't it?
+          </h2>
+          <h1 class="main-title text-center">Ostentatious & Bodacious</h1>
+        </div>
+      </div>
+
+      <!-- Nav Bar  -->
+      <nav id="main-nav">
+        <ul>
+          <li><a href="../index.html" class="current">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#main-content">Blogs</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Section A: Blog Post -->
+    <section id="blog-post">
+      <div id="primary-post" class="container border-all">
+        <p class="meta-info">Aug 27 - Josh</p>
+        <h1 class="main-title">Project 006 - ISS Tracker</h1>
+        <h2 class="sub-title">
+          Can't track my movements if I'm tracking your movements first!
+        </h2>
+        <p>
+          They say there are satellites that are tracking our every movement.
+          Well two can play at that game.
+        </p>
+        <!-- <p>Ideas for projects come from funny places.</p> -->
+        <h3 class="section-title">Project Synopsis</h3>
+        <p>
+          For this project, I want to device that can passively sit on my shelf
+          and warn me if the International Space Station (ISS) is overhead. I
+          want it to be accurate, I want it to not need to be connected to my
+          computer, and I want it to be attention grabbing enough if the ISS is
+          overhead. In short, I hate trying to plan to catch the ISS ahead of
+          time, and want to simply be able to glance at my shelf, see that it
+          is, grab a jacket and head outside. Educated improvisation has always
+          been more fun than rigorous planning!
+        </p>
+        <p>
+          Whilst I trust my maths skills, the ISS frequently makes small
+          adjustments to its orbit. So I don't think I can do this by just
+          finding its position once, and then predicting ahead of time
+          forevermore. I also don't want to have to update the position manually
+          every time the ISS does move its orbit, so I needed something that
+          could connect occasionally to the internet to update the precise
+          position. I also wanted my device to be usable anywhere, not just
+          cable-connected to my computer.
+        </p>
+        <p>Finally, after a few weeks of work, here is the result!</p>
+        <img src="../img/Blog_006_NextPass.gif" alt="" class="border-all" />
+
+        <h3 class="section-title">How does it work?</h3>
+        <p>The board I uesd was an ESP8266 NodeMCU V1.0 ESP-12E WiFI Module.</p>
+        <p>
+          On first startup, the code makes a request to
+          <a
+            class="link"
+            href="http://open-notify.org/Open-Notify-API/ISS-Location-Now/"
+            >the open notify ISS Location API</a
+          >
+          and
+          <a
+            class="link"
+            href="http://open-notify.org/Open-Notify-API/ISS-Pass-Times/"
+            >next pass api.</a
+          >
+          This gets information about the ISS current latitude, longitude, the
+          unix timestamp of when the next pass ovehead (defined as being > 10
+          degrees above the horizon) will start , and the duration of that pass
+          in seconds. After 5 seconds, it then polls the current location API
+          once again. It then calculates the approximate velocity of the ISS in
+          terms of latitude and longitude, and uses this information to update
+          the position every 0.5 seconds. This is to prevent my board polling
+          open-notify too frequently.
+        </p>
+        <img src="../img/Blog_006_NodeMCU.jpg" alt="" />
+        <p>
+          It only polls the next-pass API once the current pass has been
+          completed, typically every 90 minutes or so. I had to add in a random
+          number to this API call though, as the API seems to store the previous
+          result and then return that if you call the API again using the same
+          settings.
+        </p>
+        <p>
+          The board updates its internal state every 10 seconds, flipping
+          between displaying the current ISS position, and the time till the
+          next pass. If the board thinks the ISS is overhead, based on the
+          information given in the next-pass API result, it flips to a state
+          where it flashes up that the ISS is overhead! A little commet symbol
+          at the top of the screen updates its position across the screen to let
+          you know how far into its passover the ISS is.
+        </p>
+        <img src="../img/Blog_006_Overhead.gif" alt="" class="border-all" />
+        <p>
+          I used an I2C OLED Display Module I2C SSD1306 Screen with 128x32
+          pixels to display the results. I additionally use the excellent
+          Adafruit library to write the actual display to the board. This
+          library is great fun, and already I've got several neat ideas for
+          other projects. Getting this wired up correctly was one of the harder
+          parts of this project!
+        </p>
+        <img src="../img/Blog_006_Dudes.gif" alt="" class="border-all" />
+        <h3 class="section-title">What to improve?</h3>
+        <p>
+          One obvious improvement is that the the tracker currently ahs zero
+          casing, so all the wires are exposed ^^. I have a friend who owns a 3D
+          printer, so I might spend a bit of time learning how to print a simple
+          case for this so it doesn't look so wirey! I also want to update the
+          software slightly; whilst the ISS passes overhead pretty frequently
+          (every 90 minutes or so), most of the time it's not visible. This can
+          be beacause it's daytime, or because both you and the ISS are in the
+          shadow of the earth. The best time to see it is when you are in the
+          dark and the ISS is in the light (usually around sunset or dawn).
+          Having an extra attention-grabbing mechanism for when those passovers
+          occur would be neat!
+        </p>
+        <h3 class="section-title">So what's next?</h3>
+        <p>
+          I haven't figured out how to add a comments section to these pages
+          yet. Feel free to drop me a line though and i'll happily respond!
+          Given the difficulty I had in writing this blog post, I think updating
+          my webpage to be a bit more user friendly might be the next steps
+          though! Am sure I can add in a comments section at the same time.
+        </p>
+        <p>
+          <i>
+            All the code for the NodeMCU board I made can be found
+            <a
+              class="link"
+              href="https://github.com/JoshGreenslade/IssTracker/blob/master/ESP_Code/IssTracker/IssTracker.ino"
+              >here.</a
+            >
+          </i>
+        </p>
+      </div>
+
+      <div id="recent-posts" class="container">
+        <div class="flex space-around">
+          <p>Recent Posts</p>
+          <p>See All</p>
+        </div>
+        <div id="other-posts">
+          <div class="posts-container">
+            <a href="../posts/01_WebPage.html">
+              <div class="card-mini">
+                <img src="../img/Blog_001_MainImage.PNG" alt="" />
+                <div>
+                  <h1>This other post doesn't exist yet!</h1>
+                </div>
+              </div>
+            </a>
+            <a href="../posts/02_ISSTracker.html">
+              <div class="card-mini">
+                <img src="../img/Blog_006_Overhead.gif" alt="" />
+                <div>
+                  <h1>Nor does this one!</h1>
+                </div>
+              </div>
+            </a>
+            <div class="card-mini">
+              <img src="../img/card3.jpg" alt="" />
+              <div>
+                <h1>But they do look nice</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="bottom-line"></div>
+
+    <!-- Section B: Contact form -->
+    <section id="message-form">
+      <div class="container">
+        <i class="fas fa-chevron-down fa-3x"></i>
+        <h1>Comments? Drop me a line</h1>
+        <form action="POST" method="POST" data-netlify="true" name="contact">
+          <div class="form-container">
+            <input
+              type="text"
+              class="text-input name-input"
+              placeholder="Name"
+              required="True"
+            />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              class="text-input email-input"
+              placeholder="Email"
+              required="True"
+            />
+            <textarea
+              class="text-input message-input"
+              oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+              name="message"
+              id="message"
+              cols="1"
+              rows="1"
+              placeholder="Type your message here"
+              required="True"
+            ></textarea>
+          </div>
+          <button class="btn" type="submit">Submit</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+      <div class="footer-content">
+        <a href="https://github.com/JoshGreenslade/"
+          ><i class="fab fa-github fa-2x"></i
+        ></a>
+        <a href="https://www.linkedin.com/in/joshgreenslade/"
+          ><i class="fab fa-linkedin fa-2x"></i
+        ></a>
+        <a href="https://twitter.com/JGreenslade1"
+          ><i class="fab fa-twitter fa-2x"></i
+        ></a>
+        <p>Copyright &copy; 2020. All rights reserved</p>
+        <!-- <a href="mailto@joshgreenslade@gmail"><i class="far fa-envelope fa-2x"></i></a> -->
+      </div>
+    </footer>
+  </body>
+</html>

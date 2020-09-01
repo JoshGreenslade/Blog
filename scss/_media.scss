@@ -1,0 +1,155 @@
+@media (max-width: 1280px) {
+  .hidden {
+    display: inherit;
+  }
+  #main-content {
+    border: none;
+
+    .flex-container {
+      flex-direction: column;
+
+      #recent-posts {
+        border-right: none !important;
+      }
+    }
+
+    #about {
+      text-align: center;
+
+      .aboutme-container {
+        margin: 4rem 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .mobile {
+    display: block;
+  }
+
+  #header {
+    &-home {
+      margin-bottom: 1rem;
+      h1 {
+        font-size: 2rem;
+        padding: 0;
+        margin: 0;
+      }
+      h2 {
+        font-size: 1rem;
+        display: none;
+      }
+
+      .title-box {
+        padding: 1rem;
+      }
+    }
+  }
+  #blog-post {
+    #primary-post {
+      margin: 2rem 2rem;
+      padding: 1rem 1rem;
+      border-left: none;
+      border-right: none;
+    }
+    #recent-posts {
+      #other-posts {
+        .posts-container {
+          grid-template-columns: unset;
+          grid-template-rows: 1fr 1fr 1fr;
+          justify-content: center;
+        }
+      }
+    }
+  }
+
+  #main-nav {
+    border: none;
+    margin: 0 auto;
+    width: 100%;
+
+    ul {
+      flex-direction: row;
+      border: 1px solid $dark-color;
+    }
+
+    li {
+      border-left: 1px solid $dark-color;
+      border-right: none;
+      font-size: 1rem;
+      text-align: center;
+
+      &:first-child {
+        border-left: none;
+      }
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    a {
+      margin: 0;
+      padding: 1rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  #showcase {
+    .showcase-container {
+      padding: 1rem;
+    }
+
+    .showcase-highlight {
+      display: none;
+    }
+  }
+
+  #main-content {
+    .flex-container {
+      #recent-posts {
+        .posts-container {
+          .posts-title {
+            padding: 1rem 0rem;
+            text-align: center;
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
+
+  #footer {
+    margin: 1rem auto;
+    .footer-content {
+      flex-direction: column;
+      & > * {
+        padding: 3rem 0rem;
+        i {
+          transform: scale(2);
+          color: steelblue;
+        }
+      }
+    }
+  }
+
+  #message-form {
+    .form-container {
+      grid-template-areas:
+        "name"
+        "email"
+        "message"
+        "message";
+    }
+  }
+
+  #showcase .showcase-content .showcase-highlight {
+    font-size: 2rem;
+    letter-spacing: 0;
+    padding: 1rem 1rem;
+  }
+
+  .card .card-content {
+    margin: 1rem 1rem;
+  }
+}
