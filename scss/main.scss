@@ -7,6 +7,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: $dark-color;
+  font-weight: normal;
 }
 
 html {
@@ -15,6 +17,7 @@ html {
 
 body {
   background: $light-color;
+
   font-family: "Work Sans", sans-serif;
   font-size: 1.2rem;
 }
@@ -28,39 +31,38 @@ li {
 }
 
 a {
+  color: $highlight-color;
+  font-weight: 600;
   text-decoration: none;
-  color: $dark-color;
-}
-
-.link {
-  // text-decoration: underline;
-  color: $link-color;
 
   &:hover {
-    text-decoration: underline;
-  }
-}
-
-.skele_left,
-.skele_right {
-  position: fixed;
-  transition: 10s;
-  bottom: 0;
-
-  &:hover {
-    transform: rotate(1800deg) scale(10) translateX(50%) translateY(-50%);
-  }
-  img {
-    object-fit: cover;
-    width: 100px;
+    color: coral;
   }
 }
 
 .skele_right {
-  right: 0;
+  position: absolute;
+  right: 1vw;
+  top: 4vh;
+  transform: scale(0.5);
+  opacity: 0.2;
+  transition: all 5s ease-out;
 
   &:hover {
-    transform: rotate(1800deg) scale(10) translateX(-50%) translateY(-50%);
+    transform: scaleY(-1) translateY(-1000%);
+  }
+}
+
+.skele_left {
+  position: absolute;
+  left: 1vw;
+  top: 4vh;
+  transform: scale(0.5);
+  opacity: 0.2;
+  transition: all 5s ease-out;
+
+  &:hover {
+    transform: scaleY(-1) translateY(-1000%);
   }
 }
 
@@ -88,6 +90,7 @@ a {
 
   a {
     display: block;
+    color: $dark-color;
     padding: 0.8rem 3rem;
     transition: background-color 0.5s, color 0.5s;
 
@@ -106,7 +109,20 @@ a {
 #header {
   &-home {
     .title-box {
-      padding: 3rem;
+      margin-bottom: 3rem;
+      .pre-title {
+        margin-top: 1rem;
+        margin-bottom: 3rem;
+      }
+
+      .main-title {
+        word-spacing: 1000px;
+      }
+
+      img {
+        object-fit: cover;
+        width: 100%;
+      }
     }
 
     h2 {
@@ -116,7 +132,7 @@ a {
     }
 
     h1 {
-      font-size: 3.5rem;
+      font-size: Min(10vw, 3.6rem);
       margin-top: 2rem;
       letter-spacing: 0.2rem;
     }
@@ -194,14 +210,6 @@ a {
         margin: auto;
         width: 90%;
 
-        .card {
-          transition: 0.3s ease-in-out;
-
-          img {
-            border-right: 1px solid #ccc;
-          }
-        }
-
         .card:hover {
           transform: scale(1.02);
           background-color: $main-color;
@@ -209,10 +217,9 @@ a {
 
         .posts-title {
           padding: 4rem 0rem;
-          letter-spacing: 1.2rem;
-          font-weight: lighter;
+          font-weight: bold;
           font-size: 3rem;
-          color: $dark-color;
+          // color: $highlight-color;
         }
       }
     }
@@ -226,6 +233,10 @@ a {
         margin: 1rem auto;
       }
 
+      a {
+        text-align: center;
+      }
+
       img {
         margin: 2rem auto;
         display: block;
@@ -235,19 +246,14 @@ a {
         object-fit: cover;
       }
 
-      h3,
-      h2 {
+      h2,
+      a {
+        display: block;
         text-align: center;
       }
 
-      a {
-        color: black;
-        font-size: 2rem;
-        color: steelblue;
-
-        &:hover {
-          color: $main-color;
-        }
+      h2 {
+        font-weight: bold;
       }
 
       &:target {
@@ -301,8 +307,7 @@ a {
     }
 
     * {
-      padding-top: 1.5rem;
-      padding-bottom: 1.5rem;
+      margin-bottom: 3rem;
     }
   }
 

@@ -1,0 +1,13 @@
+<a href="posts/{{ meta['pagename'] }}.html">
+  <div class="card card-normal">
+    <img src={{ meta['featureimage'] }} alt="" />
+    <div class="card-content">
+      <h2 class="card-title">{{ meta['title'] }}</h2>
+      <p class="card-meta">{{ meta['date'] }} - {{ meta['author'] if meta['author'] else 'Josh' }}</p>
+      <br>
+      <p class="card-subtitle">
+          {{ meta['subtitle'] }}
+      </p>
+    </div>
+  </div>
+</a>

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section id="blog-post">
+  <div id="primary-post" class="container border-all">
+  {% if page.title %}
+    <h1> {{ page.title }}</h1>
+  {% endif %}
+  {% if page.date %}
+    <small> Published on  {{ page.date.strftime('%A, %d, %B, %Y') }} </small>
+  {% endif %}
+  {% if page.subtitle %}
+    <h2 class="sub-title">{{ page.subtitle }}</h2>
+  {% endif %}
+  {% if page.featureimage %}
+    <img src={{ page.featureimage }} alt="" class="border-all" />
+  {% endif %}
+
+  {{ page.html|safe }}
+
+  </div>
+</section>
+{% endblock %}

@@ -28,17 +28,22 @@
     display: block;
   }
 
+  .skele_left,
+  .skele_right {
+    display: none;
+  }
+
   #header {
     &-home {
       margin-bottom: 1rem;
       h1 {
-        font-size: 2rem;
+        // font-size: 10vw;
         padding: 0;
         margin: 0;
       }
       h2 {
         font-size: 1rem;
-        display: none;
+        opacity: 0;
       }
 
       .title-box {
@@ -59,6 +64,10 @@
           grid-template-columns: unset;
           grid-template-rows: 1fr 1fr 1fr;
           justify-content: center;
+        }
+
+        .posts-title {
+          margin-bottom: 10rem;
         }
       }
     }
@@ -149,7 +158,16 @@
     padding: 1rem 1rem;
   }
 
-  .card .card-content {
-    margin: 1rem 1rem;
+  .card {
+    &-content {
+      margin: 1rem 1rem;
+    }
+
+    &-normal {
+      .card-subtitle,
+      .card-meta {
+        display: none;
+      }
+    }
   }
 }

@@ -1,0 +1,16 @@
+<a href="posts/{{ meta['pagename'] }}.html">
+  <div class="showcase-content">
+    <img class="showcase-img" src={{ meta['featureimage'] }} alt="" />
+    <div class="showcase-text">
+      <p class="meta-info">{{ meta['date'] }} - {{ meta['author'] if meta['author'] else 'Josh' }}</p>
+      <h2 class="showcase-title">
+        {{ meta['title'] }}
+      </h2>
+      <p>
+        {{ meta['subtitle'] }}
+      </p>
+      <div class="showcase-highlight">
+        <p>Featured Post</p>
+      </div>
+    </div>
+  </a>

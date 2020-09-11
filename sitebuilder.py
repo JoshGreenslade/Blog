@@ -1,12 +1,14 @@
 import sys
+import utilities
 
-from flask import Flask, render_template
+from flask import Flask, render_template, render_template_string
 from flask_flatpages import FlatPages
 from flask_frozen import Freezer
 from flask import url_for
 
 DEBUG = True
 FLATPAGES_AUTO_RELOAD = DEBUG
+FLATPAGES_ROOT = './static/posts'
 FLATPAGES_EXTENSION = '.md'
 
 app = Flask(__name__)
@@ -28,11 +30,36 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/<path:path>.html')
+@app.route('/contact.html')
+def contact():
+    return render_template('contact.html')
+
+
+@app.route('/posts/<path:path>.html')
 def page(path):
     print("page function running")
     page = pages.get_or_404(path)
-    return render_template('page.html', page=page)
+    return render_template('blogpost.html', page=page)
+
+
+# @app.route('/generatePostCard.html')
+# def generatePostCard(post='005_WebPage', size='medium'):
+#     meta = utilities.getMarkdownMeta(f'./static/posts/{post}.md')
+#     return render_template_string('postcard-normal.html', meta=meta)
+#     return "<h1>Hello</h1>"
+
+@app.context_processor
+def postcards():
+    def generatePostCard(post='005_WebPage',
+                         size='normal'):
+        meta = utilities.getMarkdownMeta(f'./static/posts/{post}.md')
+        if size == 'normal':
+            template = 'postcard-normal.html'
+        elif size == 'large':
+            template = 'postcard-large.html'
+        return render_template(template, meta=meta)
+
+    return dict(generatePostCard=generatePostCard)
 
 
 if __name__ == '__main__':

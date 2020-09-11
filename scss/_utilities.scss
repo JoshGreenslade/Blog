@@ -72,13 +72,6 @@ h2 {
   text-align: center;
 }
 
-.meta-info {
-  font-size: 1rem;
-  font-weight: light;
-  padding-bottom: 1.5rem;
-  color: #333;
-}
-
 // Reusable Elements
 
 .text-input {
@@ -119,58 +112,47 @@ h2 {
     color: $light-color;
   }
 }
+
+// NEW
 .card {
   border: 1px black solid;
   display: flex;
   margin: auto;
-  margin-bottom: 5rem;
-  max-height: 400px;
+  height: Max(15vw, 100px);
+  transition: all 0.2s;
 
-  img {
-    object-fit: cover;
-    width: 50%;
-  }
+  &-normal {
+    background-color: white;
+    margin-bottom: 3rem;
+    font-size: Max(1.2rem, 1vw);
 
-  .card-content {
-    width: 50%;
-    margin: 4rem;
-    overflow: hidden;
-
-    .meta-info {
-      font-size: 0.8rem;
+    .card-subtitle {
+      font-size: 1.2rem;
+      font-style: italic;
     }
 
     .card-title {
-      font-size: 1.2rem;
-      font-weight: bolder;
-      letter-spacing: 0.2rem;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      font-size: 1.1rem;
+      font-weight: bold;
     }
   }
-}
 
-.card-mini {
-  display: flex;
-  flex-direction: column;
-  border: 1px $dark-color solid;
-  height: 280px;
-  width: 280px;
-
-  & > img {
-    height: 66%;
-    object-fit: cover;
-    border-bottom: 1px solid $dark-color;
-  }
-  & > div {
+  &-content {
     display: flex;
+    flex-direction: column;
+    justify-items: center;
     justify-content: center;
-    align-items: center;
-    height: 33%;
-    font-size: 0.9rem;
-    margin: 0 1rem;
+    align-items: stretch;
+    padding-left: 1rem;
+  }
+
+  img {
+    object-fit: cover;
+    width: 33%;
+    border-right: 1px solid $dark-color;
+  }
+
+  .card:hover {
+    transform: scale(1.02);
+    background-color: $main-color;
   }
 }

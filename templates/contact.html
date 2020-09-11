@@ -1,50 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&family=Work+Sans:wght@300&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://kit.fontawesome.com/fbbaef80c7.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="css/main.css" />
-    <title>Ostentatious & Bodacious | Contact</title>
-  </head>
-  <body>
-    <!-- Skeletons -->
-    <div class="skele_left">
-      <img src="./img/skel.gif" alt="" />
-    </div>
-    <div class="skele_right">
-      <img src="./img/skel.gif" alt="" />
-    </div>
+{% extends "base.html" %}
 
-    <!-- Header -->
-    <header id="header-home">
-      <div class="container">
-        <div class="title-box">
-          <h2 class="pre-title text-center">
-            Gods this top part feels pretentious doesn't it?
-          </h2>
-          <h1 class="main-title text-center">Ostentatious & Bodacious</h1>
-        </div>
-      </div>
-
-      <!-- Nav Bar  -->
-      <nav id="main-nav">
-        <ul>
-          <li><a href="index.html" class="current">Home</a></li>
-          <li><a href="index.html#about">About</a></li>
-          <li><a href="index.html#main-content">Blogs</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
-
+{% block content %}
     <!-- Section B: Contact form -->
     <section id="message-form">
       <div class="container">
@@ -93,16 +49,4 @@
       </div>
     </div>
     </div>
-
-    <!-- Footer -->
-    <footer id="footer">
-      <div class="footer-content">
-        <a href="https://github.com/JoshGreenslade/"><i class="fab fa-github fa-2x"></i></a>
-        <a href="https://www.linkedin.com/in/joshgreenslade/"><i class="fab fa-linkedin fa-2x"></i></a>
-        <a href="https://twitter.com/JGreenslade1"><i class="fab fa-twitter fa-2x"></i></a>
-        <p>Copyright &copy; 2020. All rights reserved</p>
-        <!-- <a href="mailto@joshgreenslade@gmail"><i class="far fa-envelope fa-2x"></i></a> -->
-      </div>
-    </footer>
-  </body>
-</html>
+{% endblock %}
