@@ -1,6 +1,5 @@
 .venv
 .vscode
-build
 node_modules
 package.json
 package-lock.json

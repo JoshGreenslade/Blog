@@ -1,10 +1,6 @@
 import markdown
 
 
-def generatePostCard(markdownFilePath):
-    pass
-
-
 def getMarkdownMeta(markdownFilePath):
     markdownFile = readMarkdownFile(markdownFilePath)
     metaRaw = markdownFile.Meta
@@ -22,8 +18,3 @@ def readMarkdownFile(markdownFilePath):
     md = markdown.Markdown(extensions=['meta'])  # Include meta info
     html = md.convert(text)
     return md
-
-
-x = getMarkdownMeta('./static/posts/005_WebPage.md')
-
-print('ge')

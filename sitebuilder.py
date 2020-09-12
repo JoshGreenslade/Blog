@@ -13,9 +13,7 @@ FLATPAGES_EXTENSION = '.md'
 
 app = Flask(__name__)
 app.config.from_object(__name__)
-
 pages = FlatPages(app)
-
 freezer = Freezer(app)
 
 
@@ -37,7 +35,7 @@ def contact():
 
 @app.route('/posts/<path:path>.html')
 def page(path):
-    print("page function running")
+    print(f"Generating {path}")
     page = pages.get_or_404(path)
     return render_template('blogpost.html', page=page)
 
@@ -46,6 +44,8 @@ def page(path):
 def postcards():
     def generatePostCard(post='005_WebPage',
                          size='normal'):
+        print(f"Generating {size} Postcard {post}")
+
         meta = utilities.getMarkdownMeta(f'./static/posts/{post}.md')
         if size == 'normal':
             template = 'postcard-normal.html'
@@ -58,6 +58,6 @@ def postcards():
 
 if __name__ == '__main__':
     if len(sys.argv) > 1 and sys.argv[1] == 'build':
-        freezer.freeze()
+        freezer.run(debug=True)
     else:
         app.run(host='0.0.0.0', port=5001)
