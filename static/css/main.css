@@ -1,6 +1,7 @@
 .container {
   max-width: 860px;
   margin: auto;
+  margin-bottom: 4rem;
   overflow: hidden; }
 
 .bottom-line {
@@ -334,6 +335,10 @@ a {
   #blog-post #recent-posts #other-posts .card-mini:hover {
     transform: scale(1.02);
     background-color: #e3e8ee; }
+
+#disqus_thread {
+  margin-bottom: 4rem;
+  padding: 3rem; }
 
 #message-form {
   text-align: center;

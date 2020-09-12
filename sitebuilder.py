@@ -42,12 +42,6 @@ def page(path):
     return render_template('blogpost.html', page=page)
 
 
-# @app.route('/generatePostCard.html')
-# def generatePostCard(post='005_WebPage', size='medium'):
-#     meta = utilities.getMarkdownMeta(f'./static/posts/{post}.md')
-#     return render_template_string('postcard-normal.html', meta=meta)
-#     return "<h1>Hello</h1>"
-
 @app.context_processor
 def postcards():
     def generatePostCard(post='005_WebPage',
