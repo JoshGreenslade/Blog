@@ -1,7 +1,7 @@
 title: Project 006 - ISS Tracker
 subtitle: Can't track my movements if I'm tracking your movements first!
-date: 2020-09-27
-author: Dave
+date: 2020-08-27
+author: Josh
 category: general
 featureimage: /static/img/Blog_006_Dudes.gif
 pagename: 006_ISSTracker
