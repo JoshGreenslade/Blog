@@ -125,6 +125,9 @@ h2 {
   color: #333;
   font-weight: normal; }
 
+strong {
+  font-weight: bold; }
+
 html {
   font-size: 14px; }
 

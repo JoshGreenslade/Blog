@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&family=Work+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/fbbaef80c7.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <title>Ostentatious & Bodacious</title>
+  </head>
+  <body>
+    
+
+<!-- Header -->
+<header id="header-home">
+
+  <div class="container">
+  <div class="title-box">
+    <h2 class="pre-title text-center">
+      Now avaliable in color!
+    </h2>
+    <h1 class="main-title text-center">Ostentatious & Bodacious</h1>
+    <img src="/static/img/fancyline.png" alt="">
+  </div>
+</div>
+
+  <nav id="main-nav">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#main-content">Blogs</a></li>
+    <li><a href="/contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+</header>
+
+
+
+    
+
+<section id="blog-post">
+  <div id="primary-post" class="container border-all">
+  
+    <h1> Project 008 - Free Markets</h1>
+  
+  
+    <small> Published on  Wednesday, 07, October, 2020 </small>
+  
+  
+    <h2 class="sub-title">Where we realise that things only have value if we all believe they do.</h2>
+  
+  
+    <img src=/static/img/008_Bazzar.jpg alt="" class="border-all" />
+  
+
+  <p>Several years ago, I came across <a href="https://github.com/JoshGreenslade/20_09_EconSim/blob/master/008_Emergent_Economies_for_Role_Playing_Game.pdf">this excellent article</a> written by Jonathon Doran and Ian Parberry detailing how one could build realistic market economies in fantasy games.</p>
+<p>The basic idea is pretty simple:</p>
+<p>The world is populated with different kinds of <strong>Agents</strong>. These agents consume some types of <strong>Goods</strong>, and produce other kinds of goods. For example, a farmer agent Bob might consume a quantity of wood (by building fences) to produce a quantity of food. A different agent such as Alice the woodcutter might alternatively consume food to produce wood. </p>
+<p>Over time, this would naturally lead to each agent having a surplus of some kinds of goods and a deficits in other kinds of goods. To enable trade, we therefore bring all our agents together once per turn and allow them to make requests to buy and sell to each other. Agents with excess goods will sell them to other agents with deficits in those kinds of goods. In our example above, farmers would sell food to woodcutters, and woodcutters would sell wood to farmers.</p>
+<p>All pretty normal so far. The key new idea is that <em>there is no inherit value in any of the goods</em>. The agents don't buy or sell based on some globally fixed price. Each agent maintains a certain <strong>price belief</strong> about the value of each good, independent of every other agent. For example, Bob our farmer might believe food is worth somewhere between 3 and 5 gold and will not sell food below that price belief, whereas Alice our woodcutter may believe food is worth between 4 and 8 gold and will not buy above it. </p>
+<p>To perform a trade, whether buying or selling, each agent picks a random number between their respective price belief limits, and picks a quantity of goods to sell/buy. In the market itself, these buy/sell requests alongside the price of each good and quantity of each good are added to two big books that hold every buy / sell request made that round. Those selling at the lowest prices are matched up with those buying at the highest price (to reflect the popularity of those selling at low prices and those buying at high prices). In our example, our farmer Bob might want to buy some wood. Alice, Steve, and Greg (all woodcutters) are selling for 3, 5, and 6 gold respectively. Bob the farmer will favour Alice, as she is offering the lowest price.</p>
+<p>The true price of the good is calculated as the mean of the buyer's and seller's asking price and the goods are sold for that amount. Money is handed over, goods are handed over, <em>and both agents walk away more certain in their price beliefs because they successfully bought/sold at a value they expected</em>. Specifically, they'll shift their mean price towards the price they actually traded at, and decrease the range of their price beliefs. If Alice successfully sold at 4 gold, she may shift her price beliefs from 4 - 8 gold to 3 - 5 gold. But what happens to Steve and Greg, who failed to sell? They <em>also</em> update their price beliefs, because they failed to sell. They'll also shift their price beliefs towards the typical selling price for that type of good, but they'll also increase their uncertainty to reflect their lack of knowledge about the price.</p>
+<p>Repeat this a few hundred times with a few hundred agents, and you get this:</p>
+<p><img alt="alt text" src="../static/img/008_WoodShortage.gif" /></p>
+<p>In this Gif I simulate a fake wood shortage between rounds 200 and 300. You can see this has an immediate effect on tool production, but a delayed effect on food, ore and metal production as this shortage takes time to propagate its way through the system.</p>
+<h2>But we're not done yet...</h2>
+<p>I'm not going to elaborate too much further because there's a lot more I want to do with this project. I suspect i'll end up revisiting it over the next few months. For now though, I'm shelving it. This thing is really difficult to debug and I'm not in the right frame of mind to do so.</p>
+<p>If you are interested in the code, you can find the git link here: <a href="https://github.com/JoshGreenslade/20_09_EconSim">https://github.com/JoshGreenslade/20_09_EconSim</a>.</p>
+<p>It's in a slightly rough state mind!</p>
+
+
+</section>
+
+<!-- Disquis Comments -->
+<h2 class="text-center">Like it? 
+<h2 class="text-center">Hate it?</h2> 
+<h2 class="text-center">Let me know!</h2>
+<div class="chevron-container">
+  <i class="fas fa-chevron-down fa-2x"></i>
+</div>
+
+<div id="disqus_thread" class="test container">
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+// var disqus_config = function () {
+// this.page.url = "/posts/005_WebPage.html"  // Replace PAGE_URL with your page's canonical URL variable
+// this.page.identifier = 1; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+// };
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://joshgreenslade-com.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> 
+</div>
+
+
+    <footer id="footer">
+  <div class="footer-content">
+    <a href="https://github.com/JoshGreenslade/"><i class="fab fa-github fa-2x"></i></a>
+    <a href="https://www.linkedin.com/in/joshgreenslade/"><i class="fab fa-linkedin fa-2x"></i></a>
+    <a href="https://twitter.com/JGreenslade1"><i class="fab fa-twitter fa-2x"></i></a>
+    <p>Copyright &copy; 2020. All rights reserved</p>
+    <!-- <a href="mailto@joshgreenslade@gmail"><i class="far fa-envelope fa-2x"></i></a> -->
+  </div>
+</footer>
+    <div class="skele_left">
+      <img src="/static/img/skel.gif" alt="" />
+    </div>
+    <div class="skele_right">
+      <img src="/static/img/skel.gif" alt="" />
+    </div>
+  </body>
+</html>
