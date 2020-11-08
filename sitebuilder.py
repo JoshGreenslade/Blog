@@ -33,6 +33,11 @@ def contact():
     return render_template('contact.html')
 
 
+@app.route('/tasks.html')
+def tasks():
+    return render_template('tasks.html')
+
+
 @app.route('/posts/<path:path>.html')
 def page(path):
     print(f"Generating {path}")

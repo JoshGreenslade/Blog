@@ -1,0 +1,78 @@
+{% include "header-nav.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous"></head>
+<body>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div id="main" class="card">
+                    <div class="card-content">    
+                        <span class="card-title">Task List</span>
+                        <div class="row">
+                            <form id="task-form">
+                                <div class="input-field col s12">
+                                    <input type="text" id="task" name=task>
+                                    <label for="task">New Task</label>
+                                </div>
+                                <input type="submit" value="Add Task" class="btn">
+                            </form>
+                        </div>
+                    </div>
+                    <input type="checkbox" class="filled-in" checked="checked" />
+                    <div class="card-action">
+                        <h4 id="task-title">Tasks</h5>
+                        <input type="text" name="filter" id="filter">
+                        <label for="filter">Filter Tasks</label>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Task</th>
+                                    <th>Complete?</th>
+                                </tr>
+                            </thead>
+                            <tbody id="active-tasks">
+                            </tbody>
+                        </table>
+                    </div>
+                            
+                    <ul class="collapsible ">
+                        <li>
+                            <div class="collapsible-header grey lighten-3
+                            ">Completed Tasks</div>
+                            <div class="collapsible-body">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Task</th>
+                                            <th>Complete?</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="completed-tasks">
+                                    </tbody>
+                                </table>
+                                <br>
+                                <button class="btn" id='clear-tasks'>Clear All Completed Tasks</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/static/js/taskList.js"></script>
+</body>
+</html>
